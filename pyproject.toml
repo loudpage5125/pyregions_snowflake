@@ -4,7 +4,7 @@ dynamic = ["version"]
 authors = [
   { name="Paige Laudermilch", email="loud.page5125@fastmail.com" }
 ]
-description = "A lightweight alternative to requests for use in regulated and restricted environments."
+description = "A snowflake region testing script."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
