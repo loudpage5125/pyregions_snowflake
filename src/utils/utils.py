@@ -33,7 +33,7 @@ def update(package_name: str):
     r += reqpack.get_file_targets(os.getcwd(), "requirements.txt")
     log(f"{r}")
     i = reqpack.get_indeces(r, "index-url")
-    
+
     u.extend(i)
 
     ind = ""
@@ -53,10 +53,7 @@ def update(package_name: str):
             "vc"
         ]))
 
-
     p = PInst(trust_all_hosts=True)
     p.reset_environment()
 
-    c = p.install([package_name], [ind])
-    log(c.stdout.encode("utf-8"))
-    log(c.stderr.encode("utf-8"))
+    p.install([package_name], [ind])
