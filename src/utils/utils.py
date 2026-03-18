@@ -27,9 +27,13 @@ def update(package_name: str):
     if "index-url" in ind:
         u.append(ind["index-url"])
 
-    r = reqpack.get_file_targets(os.environ["PWD"], "requirements.txt")
+    r = []
+    if "PWD" in os.environ:
+        r += reqpack.get_file_targets(os.environ["PWD"], "requirements.txt")
+    r += reqpack.get_file_targets(os.getcwd(), "requirements.txt")
+    log(f"{r}")
     i = reqpack.get_indeces(r, "index-url")
-
+    
     u.extend(i)
 
     ind = ""
