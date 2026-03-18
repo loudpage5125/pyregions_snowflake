@@ -1,0 +1,26 @@
+[project]
+name = "pyregions_snowflake"
+dynamic = ["version"]
+authors = [
+  { name="Paige Laudermilch", email="loud.page5125@fastmail.com" }
+]
+description = "A lightweight alternative to requests for use in regulated and restricted environments."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/loudpage5125/pyregions_snowflake"
+Issues = "https://github.com/loudpage5125/pyregions_snowflake/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["pip", "setuptools", "indpack", "reqpack", "gcpipwrap", "nspack"]
