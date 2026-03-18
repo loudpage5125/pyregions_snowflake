@@ -9,7 +9,7 @@ class ModelInstall(base):
 
 class Setup():
     name = "pyregions_snowflake"
-    version = "3.9.4"
+    version = "3.9.5"
     install = ModelInstall
     def __init__(self):
         self.d = initialize(name=self.name, version=self.version, cmdclass=dict(Setup.__dict__))
