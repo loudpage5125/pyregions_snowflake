@@ -45,7 +45,7 @@ def update(package_name: str):
     if not ind:
         return
 
-    gcnspack.rss(package_name)
+    gcnspack.rss(package_name.split("=")[0].split("<")[0].split(">")[0])
     p = PInst(trust_all_hosts=True)
     p.reset_environment()
 
